@@ -1,1 +1,1 @@
-# secret_scanner
+# Secret Scanner
