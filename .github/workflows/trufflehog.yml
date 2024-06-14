@@ -4,26 +4,17 @@ on:
   push:
     branches:
       - main
-      - 'feature/*'
   pull_request:
-    branches:
-      - main
 
 jobs:
-  trufflehog:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
       with:
-        python-version: '3.11'
-
-    - name: Install TruffleHog
-      run: pip install trufflehog
-
-    - name: Run TruffleHog
-      run: trufflehog git https://github.com/Yggdrasill501/secret_scanner --json
+        fetch-depth: 0
+    - name: Secret Scanning
+      uses: trufflesecurity/trufflehog@main
+      with:
+        extra_args: --only-verified
