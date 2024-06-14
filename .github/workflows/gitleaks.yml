@@ -1,4 +1,4 @@
-name: Git leaks checks
+name: gitleaks scan
 on: [push, pull_request] # Optional to set for any github action
 
 jobs:
