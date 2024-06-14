@@ -1,0 +1,29 @@
+name: TruffleHog Scan
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trufflehog:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install TruffleHog
+      run: pip install trufflehog
+
+    - name: Run TruffleHog
+      run: trufflehog git file:///home/runner/work/${{ github.repository }} --json
