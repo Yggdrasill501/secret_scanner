@@ -1,5 +1,5 @@
 name: Check for Secrets
-on: [pull_request] # Optional to set for any github action
+on: [push, pull_request] # Optional to set for any github action
 
 jobs:
   scan:
