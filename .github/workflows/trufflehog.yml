@@ -26,4 +26,4 @@ jobs:
       run: pip install trufflehog
 
     - name: Run TruffleHog
-      run: trufflehog git file:///home/runner/work/${{secret_scanner}} --json
+      run: trufflehog git file:///home/runner/work/secret_scanner --json
