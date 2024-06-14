@@ -1,0 +1,26 @@
+title = "gitleaks configuration"
+
+[[rules]]
+description = "Generic Password"
+regex = '''(?i)password\s*[:=]\s*["']?[^"'\s]+["']?'''
+tags = ["key", "password"]
+
+[[rules]]
+description = "Generic API Key"
+regex = '''(?i)api[_-]?key\s*[:=]\s*["']?[^"'\s]+["']?'''
+tags = ["key", "api"]
+
+[[rules]]
+description = "AWS Access Key"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["key", "AWS"]
+
+[[rules]]
+description = "AWS Secret Key"
+regex = '''(?i)aws(.{0,20})?['\"][0-9a-zA-Z\/+]{40}['\"]'''
+tags = ["key", "AWS"]
+
+[[rules]]
+description = "DB Connection String"
+regex = '''jdbc:mysql://[^:]+:[^@]+@[^:]+:[0-9]+/[^?]+'''
+tags = ["key", "database"]
